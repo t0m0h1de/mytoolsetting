@@ -7,7 +7,7 @@
 ## Windows Terminal Action Setting
 
 ```
-"actions":
+    "actions":
     [
         {
             "command":
@@ -27,11 +27,11 @@
         },
         {
             "command": "closeTab",
-            "keys": "alt+q"
+            "keys": "alt+shift+q"
         },
         {
             "command": "closePane",
-            "keys": "alt+shift+q"
+            "keys": "alt+q"
         },
         {
             "command": "duplicateTab",
