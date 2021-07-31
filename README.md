@@ -6,6 +6,29 @@
 
 ## Windows Terminal Action Setting
 
+| Action | key |
+| --- | --- |
+| コピー | ctrl + shift + c |
+| ペースト | ctrl + shift + v |
+| 検索 | ctrl + shift + f |
+| タブを閉じる | alt + shift + q |
+| ペインを閉じる | alt + q |
+| タブを複製する | alt + ctrl + t |
+| コマンドパレット | F1 |
+| 横にペイン分け(複製) | alt + ctrl + h |
+| 自動ペイン分け(複製) | alt + ctrl + d |
+| 縦にペイン分け(複製) | alt + ctrl + v |
+| 上にフォーカス | alt + k |
+| 左にフォーカス | alt + h |
+| 右にフォーカス | alt + l |
+| 下にフォーカス | alt + j |
+| 上にリサイズ | alt + shift + k |
+| 左にリサイズ | alt + shift + h |
+| 右にリサイズ | alt + shift + l |
+| 下にリサイズ | alt + shift + j |
+
+<br> 
+
 ```
     "actions":
     [
