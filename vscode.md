@@ -128,22 +128,32 @@
 ## VSCode Vim Setting
 
 ```json
-// vim用 setting
-"editor.wordWrap": "on", // 改行を折り返して表示
-"files.trimTrailingWhitespace": true, // 保存時whitespaceのみを削除
-"editor.minimap.enabled": false, // 右サイドのミニマップを非表示
+    // vim用 setting
+    "editor.wordWrap": "on", // 改行を折り返して表示
+    "files.trimTrailingWhitespace": true, // 保存時whitespaceのみを削除
+    "editor.minimap.enabled": false, // 右サイドのミニマップを非表示
 
-// vim setting
-"vim.easymotion": true, // easymotion有効化
-"vim.hlsearch": true, // 検索をハイライト
-"vim.incsearch": true, // 複数の検索結果をハイライト
-"vim.visualstar": true, // カーソルがあるワードを*で検索
-"vim.useSystemClipboard": true, // Yunk等をシステムのクリップボードにコピー
-"vim.useCtrlKeys": true, // vimのCtrlキーコマンドを有効化
-"vim.insertModeKeyBindings": [
-    {
-        "before": ["j", "j"],
-        "after": ["<Esc>"]
-    },
-],
+    // vim setting
+    "vim.easymotion": true, // easymotion有効化
+    "vim.hlsearch": true, // 検索をハイライト
+    "vim.incsearch": true, // 複数の検索結果をハイライト
+    "vim.visualstar": true, // カーソルがあるワードを*で検索
+    "vim.useSystemClipboard": true, // Yunk等をシステムのクリップボードにコピー
+    "vim.useCtrlKeys": true, // vimのCtrlキーコマンドを有効化
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before" : ["u"],
+            "commands" : ["undo"]
+        },
+        {
+            "before" : ["<C-r>"],
+            "commands" : ["redo"]
+        },
+    ],
 ```
