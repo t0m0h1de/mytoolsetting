@@ -148,12 +148,28 @@
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before" : ["u"],
-            "commands" : ["undo"]
+            "before": ["<leader>", "d"],
+            "after": ["d", "d"]
         },
         {
-            "before" : ["<C-r>"],
-            "commands" : ["redo"]
+            "before": ["<C-n>"],
+            "commands": [":nohl"]
+        },
+        {
+            "before": ["x"],
+            "after": ["\"", "_", "x"]
+        },
+        {
+            "before": ["s"],
+            "after": ["\"", "_", "s"]
+        },
+        {
+            "before": ["u"],
+            "commands": ["undo"]
+        },
+        {
+            "before": ["<C-r>"],
+            "commands": ["redo"]
         },
     ],
 ```
