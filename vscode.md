@@ -22,6 +22,7 @@
 ## Keybind Setting
 
 ```json
+// Place your key bindings in this file to override the defaults
 [
     // コマンドパレット等でj移動
     {
@@ -35,17 +36,61 @@
         "command": "workbench.action.quickOpenSelectPrevious",
         "when": "inQuickOpen"
     },
-    // サジェスト内でj移動
+    // Easy navigation in suggestion/intellisense
+    // Cannot be added to package.json because of conflict with vim's default bindings
     {
         "key": "ctrl+j",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
-    // サジェスト内でk移動
     {
         "key": "ctrl+k",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    // Easy navigation in code action
+    {
+        "key": "ctrl+j",
+        "command": "selectNextCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "acceptSelectedCodeAction",
+        "when": "codeActionMenuVisible"
+    },
+    // Add ctrl+h/l to navigate in file browser
+    {
+        "key": "ctrl+h",
+        "command": "file-browser.stepOut",
+        "when": "inFileBrowser"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "file-browser.stepIn",
+        "when": "inFileBrowser"
+    },
+    // Easy navigation in parameter hint (i.e. traverse the hints when there's multiple overload for one method)
+    // Cannot be added to package.json because of conflict with vim's default bindings
+    {
+        "key": "ctrl+j",
+        "command": "showNextParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "showPrevParameterHint",
+        "when": "editorFocus && parameterHintsMultipleSignatures && parameterHintsVisible"
     },
     // サジェストのキャンセル
     {
@@ -58,7 +103,89 @@
         "key": "ctrl+[",
         "command": "keybindings.editor.clearSearchResults",
         "when": "inKeybindings && inKeybindingsSearch"
-    }
+    },
+    // # Seetings for VSpaceCode
+    // Trigger vspacecode in empty editor group
+    {
+        "key": "space",
+        "command": "vspacecode.space",
+        "when": "activeEditorGroupEmpty && focusedView == '' && !whichkeyActive && !inputFocus"
+    },
+    // Trigger vspacecode when sidebar is in focus
+    {
+        "key": "space",
+        "command": "vspacecode.space",
+        "when": "sideBarFocus && !inputFocus && !whichkeyActive"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "ibmcuratorAI.sourceCodeFromComments",
+    },
+    // "Quick Window Navigation" settings described in "Bonus" section (https://vspacecode.github.io/docs/bonus#quick-window-navigation)
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft",
+        "when": "!inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible && !isInDiffEditor"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown",
+        "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp",
+        "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight",
+        "when": "!codeActionMenuVisible && !inQuickOpen && !suggestWidgetVisible && !parameterHintsVisible && !isInDiffEditor"
+    },
+    // Quick Navigation for diff view
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.compareEditor.focusSecondarySide",
+        "when": "isInDiffEditor && !isInDiffLeftEditor"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft",
+        "when": "isInDiffEditor && isInDiffLeftEditor"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.compareEditor.focusPrimarySide",
+        "when": "isInDiffEditor && isInDiffLeftEditor"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight",
+        "when": "isInDiffEditor && !isInDiffLeftEditor"
+    },
+    // Disable default keybind when focusing a terminal for terminal emulator
+    {
+        "key": "ctrl+f",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    // # Seetings for VSpaceCode
+    // Trigger vspacecode in empty editor group
+    {
+        "key": "ctrl+space",
+        "command": "vspacecode.space",
+        "when": "terminalFocusInAny"
+    },
 ]
 ```
 
@@ -125,9 +252,20 @@
 
 <br>
 
+## Font Setting
+
+```json
+    // FONT設定
+    "editor.fontFamily": "'IBM Plex Mono', 'IBM Plex Sans JP'",
+    "terminal.integrated.fontFamily": "'IBM Plex Mono', 'IBM Plex Sans JP'",
+```
+
+<br>
+
 ## VSCode Vim Setting
 
 ```json
+    // vim設定
     // vim用 setting
     "editor.wordWrap": "on", // 改行を折り返して表示
     "files.trimTrailingWhitespace": true, // 保存時whitespaceのみを削除
@@ -147,6 +285,20 @@
         },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<space>"],
+            "commands": ["vspacecode.space"]
+        },
+        {
+            "before": [","],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        },
         {
             "before": ["<leader>", "d"],
             "after": ["d", "d"]
@@ -171,5 +323,44 @@
             "before": ["<C-r>"],
             "commands": ["redo"]
         },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<space>"],
+            "commands": ["vspacecode.space"],
+        },
+        {
+            "before": [","],
+            "commands": [
+                "vspacecode.space",
+                {
+                    "command": "whichkey.triggerKey",
+                    "args": "m"
+                }
+            ]
+        },
+        {
+            "before": [">"],
+            "commands": ["editor.action.indentLines"],
+        },
+        {
+            "before": ["<"],
+            "commands": ["editor.action.outdentLines"],
+        },
+    ],
+```
+
+<br>
+
+## VSpaceCode Setting
+
+```json
+    "vspacecode.bindingOverrides": [
+        {
+            "keys": "f.@",
+            "name": "Create terminal in editor area",
+            "type": "command",
+            "command": "workbench.action.createTerminalEditor",
+        }
     ],
 ```
